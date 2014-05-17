@@ -1,0 +1,5 @@
+i*.swo
+*.swp
+*.un~
+fish_history
+fishd.*
