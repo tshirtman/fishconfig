@@ -39,3 +39,5 @@ end
 
 . virtual.fish
 . auto_activation.fish
+
+setenv EDITOR vim
