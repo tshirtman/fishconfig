@@ -41,3 +41,5 @@ end
 . auto_activation.fish
 
 setenv EDITOR vim
+set fish_date_color1 93cc93
+set fish_date_color2 ccaf93

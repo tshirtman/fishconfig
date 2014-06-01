@@ -23,3 +23,5 @@ case $yn in
 	*) echo "please answer yes or no";;
 esac
 done
+
+set -Ux PYTHONPATH ~/kivy/:~/cymunk/cymumk/python:~/KivEnt/kivent/
