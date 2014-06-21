@@ -37,8 +37,8 @@ if status --is-login
 	end
 end
 
-. virtual.fish
-. auto_activation.fish
+. ~/.config/fish/virtual.fish
+. ~/.config/fish/auto_activation.fish
 
 setenv EDITOR vim
 set fish_date_color1 93cc93
