@@ -601,6 +601,7 @@ function __fish_git_prompt_operation_branch_bare --description "__fish_git_promp
 			set branch "($branch)"
 		end
 	end
+	set branch "$branch|$short_sha"
 
 	if test "true" = $inside_gitdir
 		if test "true" = $bare_repo
