@@ -4,6 +4,7 @@ do
 read -p "do you want to link $PWD to ~/.config/fish (Y/N)" yn
 case $yn in
 	[Yy]*)
+		mkdir -p ~/.comfig/;
 		rm -rf ~/.config/fish;
 		ln -sf $PWD ~/.config/fish;
 		break;;
