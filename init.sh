@@ -17,7 +17,7 @@ while true
 do
 read -p "do you want to install fish? (Y/N)" yn
 case $yn in
-	[Yy]*) sudo apt-get install -y fish;
+	[Yy]*) sudo apt-get install -y fish groff;
 		chsh -s /usr/bin/fish;
 		break;;
 	[Nn]*) break;;

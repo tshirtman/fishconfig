@@ -18,10 +18,10 @@ function fish_prompt --description 'the prompt'
 	set_color normal
 
 	# Show loadavg when too high
-	set -l load1m (uptime | grep -o '[0-9]\+\,[0-9]\+' | head -n1)
+	set -l load1m (uptime | grep -o '[0-9]\+[\.\,][0-9]\+' | head -n1)
 	set -l load1m_test (math (echo $load1m|sed -s s/,/\./) \* 100 / 1)
 	if test $load1m_test -gt 100
-	  set_color $fish_color_error; printf "$load1m "
+	  set_color $fish_color_error; printf "$load1m"
 	end
 
 	# Show disk usage when low
@@ -30,8 +30,8 @@ function fish_prompt --description 'the prompt'
 	 
 	# Virtual Env
 	if set -q VIRTUAL_ENV
-	set_color $fish_color_comment; printf (basename "$VIRTUAL_ENV")
-	set_color normal
+	  set_color $fish_color_comment; printf (basename "$VIRTUAL_ENV")
+	  set_color normal
 	end
 	 
 	set_color $fish_color_param; __fish_git_prompt; set_color normal
