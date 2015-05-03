@@ -40,6 +40,11 @@ end
 . ~/.config/fish/virtual.fish
 . ~/.config/fish/auto_activation.fish
 
+alias v vim
+alias g git
+alias l ls
+alias b bash
+
 setenv EDITOR vim
 set fish_date_color1 93cc93
 set fish_date_color2 ccaf93
