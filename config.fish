@@ -39,6 +39,7 @@ end
 
 . ~/.config/fish/virtual.fish
 . ~/.config/fish/auto_activation.fish
+eval sh ~/.config/fish/base16-default.dark.sh
 
 alias v vim
 alias g git
