@@ -14,3 +14,4 @@ set -U fish_color_redirection normal
 set -U fish_color_user green
 
 set -U fish_user_paths $fish_user_paths ~/.local/bin/
+set -U SOLARIZED dark
