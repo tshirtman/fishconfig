@@ -35,3 +35,16 @@ case $yn in
 	*) echo "please answer yes or no";;
 esac
 done
+
+while true
+do
+	read -p "do you want to add base16 default themes to gnome-terminal? (Y/N)" yn
+	case $yn in
+		[Yy]*)  ./gnome-terminal/base16-default.dark.sh;
+			./gnome-terminal/base16-default.light.sh;
+			break;;
+		[Nn]*)
+			break;;
+		*) echo "please answer yes or no";;
+	esac
+done
