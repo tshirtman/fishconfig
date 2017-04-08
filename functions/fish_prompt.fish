@@ -27,21 +27,25 @@ function fish_prompt --description 'the prompt'
 	# Show disk usage when low
 	hddtest /
 	hddtest /media/gabriel/storage/
-	 
+
 	# Virtual Env
 	if set -q VIRTUAL_ENV
 	  set_color $fish_color_comment; printf (basename "$VIRTUAL_ENV")
 	  set_color normal
 	end
-	 
+
 	set_color $fish_color_param; __fish_git_prompt; set_color normal
-	 
+
 	if [ $last_status -ne 0 ]
 		set_color $fish_color_error; printf " $last_status"
 		set -ge status
 	end
 
 	set_color green; printf " $CMD_DURATION"
+	if test $CMD_DURATION -gt 5000
+		set seconds (math $CMD_DURATION / 1000)"s"
+		notify-send -t 1 "finished after $seconds" "$history[1]"
+	end
 
 	printf "\n"
 	set_color $fish_color_user; echo -n (whoami)
@@ -50,7 +54,5 @@ function fish_prompt --description 'the prompt'
 	set_color normal; printf ":"
 	set_color $fish_color_cwd; printf (prompt_pwd)
 
-	#printf (pwd | sed "s,/,$c0/$c1,g" | sed "s,\(.*\)/[^m]*m,\1/$c3,")
-	 
 	printf "> "
 end
