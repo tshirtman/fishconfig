@@ -42,7 +42,7 @@ function fish_prompt --description 'the prompt'
 	end
 
 	set_color green; printf " $CMD_DURATION"
-	if test $CMD_DURATION -gt 5000
+	if test $CMD_DURATION -gt 30000
 		set seconds (math $CMD_DURATION / 1000)"s"
 		notify-send -t 1 "finished after $seconds" "$history[1]"
 	end
