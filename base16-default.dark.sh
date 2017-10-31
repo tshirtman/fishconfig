@@ -2,6 +2,11 @@
 # Base16 Default - Shell color setup script
 # Chris Kempson (http://chriskempson.com)
 
+if [ -n "${SSH_CLIENT}" ]; then
+    # don't run when it's an incomming ssh connection
+    return 2>/dev/null || exit 0
+fi
+
 if [ "${TERM%%-*}" = 'linux' ]; then
     # This script doesn't support linux console (use 'vconsole' template instead)
     return 2>/dev/null || exit 0
