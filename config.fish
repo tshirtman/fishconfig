@@ -45,6 +45,7 @@ alias v vim
 alias g git
 alias l ls
 alias b bash
+alias p python
 
 setenv EDITOR vim
 set fish_date_color1 93cc93
