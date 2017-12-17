@@ -1,8 +1,9 @@
 function hddtest
-	if test -e $argv[1]
-		set -l du (df $argv[1] | tail -n1 | tr -s ' ' ' ' | cut -d' ' -f 5 | cut -d'%' -f1)
+	set target $argv[1]
+	if test -e $target
+		set -l du (df $target | tail -n1 | tr -s ' ' ' ' | cut -d' ' -f 5 | cut -d'%' -f1)
 		if test $du -gt 80
-		  printf "$fish_color_error argv[1] $du%%"
+                  set_color $fish_color_error; printf "$target $du%%"
 		end
 	end
 end
