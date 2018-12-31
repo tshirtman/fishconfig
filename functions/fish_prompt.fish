@@ -39,15 +39,15 @@ function fish_prompt --description 'the prompt'
 
 	if [ $last_status -ne 0 ]
 		set_color $fish_color_error; printf " $last_status"
-		set -ge status
+		set -e status
 	end
 
 	set_color green; printf " $CMD_DURATION"
-	if test $CMD_DURATION -a $CMD_DURATION -gt 10000
-		set seconds (math $CMD_DURATION / 1000)"s"
-		notify-send -t 1 "finished after $seconds" "$history[1]" --urgency low
-		set -ge CMD_DURATION
-	end
+	# if test $CMD_DURATION -a $CMD_DURATION -gt 10000
+	# 	set seconds (math $CMD_DURATION / 1000)"s"
+	# 	notify-send -t 1 "finished after $seconds" "$history[1]" --urgency low
+	# 	set -ge CMD_DURATION
+	# end
 
 	printf "\n"
 	set_color $fish_color_user; echo -n (whoami)
