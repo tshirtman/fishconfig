@@ -41,7 +41,7 @@ function fish_prompt --description 'the prompt'
 
 	# Virtual Env
 	if set -q VIRTUAL_ENV
-	  set_color green; printf "🐍("; printf (basename "$VIRTUAL_ENV"); printf ")"
+	  set_color green; printf "  ("; printf (basename "$VIRTUAL_ENV"); printf ")"
 	  set_color normal
 	end
 

@@ -52,4 +52,6 @@ setenv TERM xterm
 set fish_date_color1 93cc93
 set fish_date_color2 ccaf93
 
+set ___fish_git_prompt_color_prefix " "
+
 # ~/.pyenv/bin/pyenv init - | source
