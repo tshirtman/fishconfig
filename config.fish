@@ -52,10 +52,4 @@ setenv TERM xterm
 set fish_date_color1 93cc93
 set fish_date_color2 ccaf93
 
-# Base16 Shell
-if status --is-interactive
-    if not set -q TMUX
-        set BASE16_SHELL "$HOME/.config/base16-shell/"
-        source "$BASE16_SHELL/profile_helper.fish"
-    end
-end
+# ~/.pyenv/bin/pyenv init - | source

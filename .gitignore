@@ -3,3 +3,4 @@ i*.swo
 *.un~
 fish_*history
 fishd.*
+functions/base16-*

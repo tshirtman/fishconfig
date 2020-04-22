@@ -1,0 +1,1 @@
+/c/Users/gpettier/dev/kubectx/completion/kubectx.fish

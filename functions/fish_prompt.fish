@@ -1,11 +1,23 @@
-function hddtest
-	set target $argv[1]
-	if test -e $target
-		set -l du (df $target | tail -n1 | tr -s ' ' ' ' | cut -d' ' -f 5 | cut -d'%' -f1)
-		if test $du -gt 80
-                  set_color $fish_color_error; printf "$target $du%%"
-		end
-	end
+function kubectl_status
+  [ -z "$KUBECTL_PROMPT_ICON" ]; and set -l KUBECTL_PROMPT_ICON "⎈"
+  [ -z "$KUBECTL_PROMPT_SEPARATOR" ]; and set -l KUBECTL_PROMPT_SEPARATOR "/"
+  set -l config $KUBECONFIG
+  [ -z "$config" ]; and set -l config "$HOME/.kube/config"
+  if [ ! -f $config ]
+    echo (set_color red)$KUBECTL_PROMPT_ICON" "(set_color white)"no config"
+    return
+  end
+
+  set -l ctx (kubectl config current-context 2>/dev/null)
+  if [ $status -ne 0 ]
+    echo (set_color red)$KUBECTL_PROMPT_ICON" "(set_color white)"no context"
+    return
+  end
+
+  set -l ns (kubectl config view -o "jsonpath={.contexts[?(@.name==\"$ctx\")].context.namespace}")
+  [ -z $ns ]; and set -l ns 'default'
+
+  echo (set_color cyan)$KUBECTL_PROMPT_ICON" "(set_color white)"($ctx$KUBECTL_PROMPT_SEPARATOR$ns)"
 end
 
 function fish_prompt --description 'the prompt'
@@ -25,13 +37,11 @@ function fish_prompt --description 'the prompt'
 	  set_color $fish_color_error; printf "$load1m"
 	end
 
-	# Show disk usage when low
-	hddtest /
-	hddtest /media/gabriel/storage/
+	printf (kubectl_status)
 
 	# Virtual Env
 	if set -q VIRTUAL_ENV
-	  set_color $fish_color_comment; printf (basename "$VIRTUAL_ENV")
+	  set_color green; printf "🐍("; printf (basename "$VIRTUAL_ENV"); printf ")"
 	  set_color normal
 	end
 
