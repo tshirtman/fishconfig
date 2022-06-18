@@ -39,6 +39,7 @@ end
 
 . ~/.config/fish/virtual.fish
 . ~/.config/fish/auto_activation.fish
+. ~/.config/fish/auto_source_venv.fish
 
 alias v vim
 alias g git
@@ -54,4 +55,16 @@ set fish_date_color2 ccaf93
 
 set ___fish_git_prompt_color_prefix " "
 
-# ~/.pyenv/bin/pyenv init - | source
+# Base16 Shell
+if status --is-interactive
+    if not set -q TMUX
+        set BASE16_SHELL "$HOME/.config/base16-shell/"
+        source "$BASE16_SHELL/profile_helper.fish"
+    end
+end
+
+
+# pyenv init
+if command -v ~/.pyenv/bin/pyenv 1>/dev/null 2>&1
+  ~/.pyenv/bin/pyenv init - | source
+end
